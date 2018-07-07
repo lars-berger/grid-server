@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Grid = new Schema({
-  url: {    // identifies the grid (grid.tv/:url)
+  name: {
     type: String,
+    required: true
+  },
+  URL: {
+    type: String,   //link to stream
+    required: true
   },
   videos: [{
     type: {
@@ -17,4 +22,4 @@ const Grid = new Schema({
   }],
   //statistics: visitors/watching
 });
-module.exports = mongoose.model('Grid',Grid);
+module.exports = mongoose.model('Grids',Grid);

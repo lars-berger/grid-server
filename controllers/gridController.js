@@ -24,6 +24,18 @@ module.exports.saveGrid = async (ctx,next) => {
 };
 
 module.exports.getGrid = async (ctx,next) => {
-  const grid = await Grid.findOne({URL: ctx.params.id});
-  ctx.body = {videos: grid.videos}
+  let grid = await Grid.findOne({URL: ctx.params.id}).select('videos -_id');
+  grid = grid.videos.map((el)=>{
+    return {
+      type: el.type,
+      linkURL: el.linkURL
+    };
+  });
+  ctx.body = {videos: grid}
+};
+
+
+module.exports.deleteGrid = async (ctx,next) => {
+  const grid = await Grid.remove({URL: ctx.request.body.URL})
+  ctx.body = grid;
 };

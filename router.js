@@ -10,9 +10,10 @@ const authorize = require(__dirname + '/middleware/auth');
 // API: Tracking endpoints for dashboard
 router
   .get('/auth/facebook', loginFTW.first )
+  .get('/getGrid/:id',gridCont.getGrid)
 
   .get('/getUser', authorize, userCont.getUser)
-  .get('/:id',gridCont.getGrid)
+  .delete('/deleteGrid',authorize, gridCont.deleteGrid)
   .post('/saveGrid',authorize, gridCont.saveGrid);
 
 module.exports = router;

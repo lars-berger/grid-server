@@ -20,5 +20,10 @@ module.exports.saveGrid = async (ctx,next) => {
     { fbUserId: ctx.user.id },
     { $push: { grids: grid._id} }
 );
-  ctx.body={grid}
+  ctx.body={URL:uuid}
+};
+
+module.exports.getGrid = async (ctx,next) => {
+  const grid = await Grid.findOne({URL: ctx.params.id});
+  ctx.body = {videos: grid.videos}
 };

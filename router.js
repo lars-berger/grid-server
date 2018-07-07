@@ -12,10 +12,7 @@ router
   .get('/auth/facebook', loginFTW.first )
 
   .get('/getUser', authorize, userCont.getUser)
-
+  .get('/:id',gridCont.getGrid)
   .post('/saveGrid',authorize, gridCont.saveGrid);
-
-
-
 
 module.exports = router;

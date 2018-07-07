@@ -7,7 +7,6 @@ const loginFTW = require('./controllers/loginftw')
 
 // API: Tracking endpoints for dashboard
 router
-
   .get('/auth/facebook', loginFTW.first );
 
 

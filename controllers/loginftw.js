@@ -20,6 +20,5 @@ module.exports.first = async (ctx,next) =>{
   }
   ctx.jwt.modified = true;
   ctx.user = response.id;
-  console.log(user)
   ctx.body={response}
 };

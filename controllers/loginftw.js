@@ -3,8 +3,6 @@ const fetch = require('node-fetch');
 const User = require(__dirname + '/../models/User');
 
 module.exports.first = async (ctx,next) =>{
-  console.log( ctx.headers)
-
   const token = ctx.headers.authorization.split('Bearer ')[1];
   const appsecretProof = CryptoJS.HmacSHA256(token, process.env.FBCLIENTSECRET).toString(CryptoJS.enc.Hex);
   const baseUrl = 'https://graph.facebook.com/me?fields=id,name,email,picture&access_token=';

@@ -12,7 +12,7 @@ const jWToken = async (ctx, next) => {
       } else {
         let decoded = jwt.verify(auth[1], process.env.JWT_SECRET);
         ctx.user = {
-          username: decoded.username
+          id: decoded.id
         };
         await next();
       }

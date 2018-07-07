@@ -7,7 +7,6 @@ const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const jwt = require(__dirname + '/middleware/jwt')
 
-const passport = require(__dirname + '/services/auth');
 
 const app = module.exports = new koa();
 
@@ -24,7 +23,6 @@ mongoose.connect(process.env.MONGODB_URL)
   .catch(err => console.log(err));
 
 app
-  .use(passport.initialize())
   .use(logger())
   .use(jwt)
   .use(cors())

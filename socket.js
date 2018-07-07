@@ -15,13 +15,15 @@ module.exports.start = function (server) {
       console.log('Disconnected: %s sockets connected', connections.length);
     });
 
-    socket.on('fdsa', data => {
-      socket.emit('asdf', data)
+    socket.on('new message', data => {
+      io.to(data.room).emit('handle message', {
+        name: data.name,
+        message: data.message,
+      })
     })
-
     socket.on('join', data => {
-      socket.join(data.subID)
-      console.log('joined channel' + data.subID)
+      socket.join(data.room)
+      console.log('joined channel' + data.room)
     });
 
 

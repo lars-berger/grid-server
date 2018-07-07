@@ -1,11 +1,13 @@
 'use strict';
 const router = require('koa-router')();
+const passport = require(__dirname + '/services/auth');
+const apiController = require('./controllers/api.controller');
+const loginFTW = require('./controllers/loginftw')
 
-// const apiController = require('./controllers/api.controller');
 
 // API: Tracking endpoints for dashboard
-// router.get('/trackings', requireLogin, apiController.fetchAll);
-// router.post('/trackings', apiController.addPackage);
-// router.delete('/trackings', requireLogin, apiController.removePackage);
+router
+  .get('/auth/facebook', loginFTW.first );
+
 
 module.exports = router;

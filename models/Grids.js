@@ -17,3 +17,4 @@ const Grid = new Schema({
   }],
   //statistics: visitors/watching
 });
+module.exports = mongoose.model('Grid',Grid);

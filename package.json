@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,8 +21,9 @@
     "koa-logger": "^3.2.0",
     "koa-passport": "^4.1.0",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.1.7",
+    "mongoose": "^5.2.4",
     "node-fetch": "^2.1.2",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "uuid": "^3.3.2"
   }
 }

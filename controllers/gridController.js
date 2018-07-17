@@ -59,5 +59,5 @@ module.exports.popular = async (ctx,next) => {
       viewers: topTen[i][1]
     });
   }
- ctx.body = {TopTen: result};
+ ctx.body = { TopTen: result };
 };

@@ -11,6 +11,7 @@ const authorize = require(__dirname + '/middleware/auth');
 router
   .get('/auth/facebook', loginFTW.first )
   .get('/getGrid/:id',gridCont.getGrid)
+  .get('/popular', gridCont.popular)
 
   .get('/getUser', authorize, userCont.getUser)
   .delete('/deleteGrid',authorize, gridCont.deleteGrid)

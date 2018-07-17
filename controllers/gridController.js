@@ -1,6 +1,7 @@
 const uuidv4 = require('uuid/v4');
 const User = require(__dirname + '/../models/User');
 const Grid = require(__dirname + '/../models/Grids');
+const rooms = require(__dirname + '/../socket').rooms;
 
 
 module.exports.saveGrid = async (ctx,next) => {
@@ -38,4 +39,25 @@ module.exports.getGrid = async (ctx,next) => {
 module.exports.deleteGrid = async (ctx,next) => {
   const grid = await Grid.remove({URL: ctx.request.body.URL})
   ctx.body = grid;
+};
+
+module.exports.popular = async (ctx,next) => {
+  const sort = [], result = [];
+  let aux;
+  for (var room in rooms) {
+    sort.push([room, rooms[room]]);
+  }
+  sort.sort(function(a, b) {
+    return b[1] - a[1];
+  });
+  const topTen = sort.splice(0,10);
+  for ( let i =0; i< topTen.length; i++ ) {
+    aux = await Grid.findOne({URL: topTen[i][0]}).select('name -_id');
+    result.push({
+      name: aux.name,
+      url: topTen[i][0],
+      viewers: topTen[i][1]
+    });
+  }
+ ctx.body = {TopTen: result};
 };

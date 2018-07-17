@@ -1,9 +1,10 @@
+module.exports.rooms = {};
+module.exports.users = {};
+
 module.exports.start = function (server) {
   const io = require('socket.io')(server, { wsEngine: 'ws' }); // remove wsEngine object in prod
-
-
-  users = {};
-  rooms = {};
+  rooms = this.rooms;
+  users = this.users;
   connections = [];
 
   io.sockets.on('connection', (socket) => {
